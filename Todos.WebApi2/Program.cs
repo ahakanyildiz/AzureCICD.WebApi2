@@ -20,6 +20,7 @@ app.MapGet("/getall", () => Results.Ok(new List<string>()
     "Example1",
     "Example2"
 }));
+
 app.MapGet("/create", (ToDoContext context, string work) =>
 {
     ToDo todo = new()
@@ -28,8 +29,15 @@ app.MapGet("/create", (ToDoContext context, string work) =>
     };
     context.ToDos.Add(todo);
     context.SaveChanges();
-    Results.Ok(work);
+    return Results.Ok(work);
 });
 
 app.MapGet("/selamver", () => "Hola Dunia");
+
+using (IServiceScope scope = app.Services.CreateScope())
+{
+    IServiceProvider srv = scope.ServiceProvider;
+    ToDoContext context = srv.GetRequiredService<ToDoContext>();
+    context.Database.Migrate();
+}
 app.Run();
