@@ -27,7 +27,7 @@ jobs:
       run: dotnet publish ./Todos.WebApi2/Todos.WebApi2.csproj --configuration Release --no-build --output './publish'
 
     - name: Build Docker image
-      run: docker build -t my-todo-app:latest .
+      run: docker build -f Todos.WebApi2/Dockerfile -t my-todo-app:latest .
 
     - name: Save Docker image to file
       run: docker save my-todo-app:latest -o my-todo-app.tar
