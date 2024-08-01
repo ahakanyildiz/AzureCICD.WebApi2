@@ -28,6 +28,7 @@ app.MapGet("/create", (ToDoContext context, string work) =>
     context.SaveChanges();
     Console.WriteLine("Hello world");
     Console.WriteLine("Kayýt baþarýyla yapýldý.");
+    Console.WriteLine("selamiden push yaptým");
     return Results.Ok(work);
 });
 
