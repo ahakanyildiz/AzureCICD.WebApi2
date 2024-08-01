@@ -15,11 +15,7 @@ WebApplication app = builder.Build();
 app.UseSwagger();
 app.UseSwaggerUI();
 app.MapGet("/", () => "Hello World!");
-app.MapGet("/getall", () => Results.Ok(new List<string>()
-{
-    "Example1",
-    "Example2"
-}));
+app.MapGet("/getall", (ToDoContext context) => Results.Ok(context.ToDos.ToList()));
 
 app.MapGet("/create", (ToDoContext context, string work) =>
 {
