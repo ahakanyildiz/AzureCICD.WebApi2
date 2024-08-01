@@ -1,0 +1,39 @@
+name: selamiPublish
+
+on:
+  push:
+    branches:
+    - selami
+
+jobs: 
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '8.0.x'
+        
+    - name: Restore
+      run: dotnet restore ./Todos.WebApi2.sln 
+      
+    - name: Build
+      run: dotnet build ./Todos.WebApi2.sln --configuration Release
+
+    - name: Publish 
+      run: dotnet publish ./Todos.WebApi2/Todos.WebApi2.csproj --configuration Release --no-build --output './publish'
+
+    - name: Build Docker image
+      run: docker build -t my-todo-app:latest .
+
+    - name: Save Docker image to file
+      run: docker save my-todo-app:latest -o my-todo-app.tar
+
+    - name: Upload Docker image as artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: my-todo-app-image
+        path: my-todo-app.tar
