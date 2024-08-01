@@ -12,13 +12,7 @@ app.MapGet("/getall", () => Results.Ok(new List<string>()
     "Example1",
     "Example2"
 }));
-app.MapGet("/create", (string work) =>
-{
-    Results.Ok(work + "slmn");
-});
+app.MapGet("/create", (string work) => Results.Ok(work));
 
-app.MapGet("/selamver", () =>
-{
-    Results.Ok("Hello canim benim");
-});
+app.MapGet("/selamver", () => "Hola Dunia");
 app.Run();
