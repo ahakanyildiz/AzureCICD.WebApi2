@@ -17,4 +17,8 @@ app.MapGet("/create", (string work) =>
     Results.Ok(work + "slmn");
 });
 
+app.MapGet("/selamver", () =>
+{
+    Results.Ok("Hello canim benim");
+})
 app.Run();
