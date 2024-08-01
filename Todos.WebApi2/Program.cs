@@ -26,6 +26,7 @@ app.MapGet("/create", (ToDoContext context, string work) =>
     };
     context.ToDos.Add(todo);
     context.SaveChanges();
+    Console.WriteLine("Kayýt baþarýyla yapýldý.");
     return Results.Ok(work);
 });
 
