@@ -14,7 +14,7 @@ app.MapGet("/getall", () => Results.Ok(new List<string>()
 }));
 app.MapGet("/create", (string work) =>
 {
-    Results.Ok(work);
+    Results.Ok(work + "slmn");
 });
 
 app.Run();
