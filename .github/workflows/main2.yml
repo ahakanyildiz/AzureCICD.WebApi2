@@ -1,7 +1,6 @@
-name: Publish
+name: selamiPublish
 
 on:
-  workflow_dispatch:
   push:
     branches:
     - selami
