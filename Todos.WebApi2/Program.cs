@@ -32,6 +32,15 @@ app.MapGet("/create", (ToDoContext context, string work) =>
     return Results.Ok(work);
 });
 
+app.MapGet("/updatetodo", (ToDoContext context, int id, string name) =>
+{
+    ToDo? a = context.ToDos.Find(id);
+    a.Work = name;
+    context.ToDos.Update(a);
+    context.SaveChanges();
+    return Results.Ok(name + " olarak" + "Update edildi.");
+});
+
 app.MapGet("/selamver", () => "Hola Dunia");
 
 using (IServiceScope scope = app.Services.CreateScope())
