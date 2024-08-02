@@ -18,6 +18,7 @@ app.MapGet("/", () => "Hello World!");
 app.MapGet("/getall", (ToDoContext context) => Results.Ok(context.ToDos.ToList()));
 app.MapGet("/farukaselam", () => Results.Ok("selam faruk"));
 Console.WriteLine("hello world");
+Console.WriteLine("merhaba dünya");
 app.MapGet("/create", (ToDoContext context, string work) =>
 {
     ToDo todo = new()
