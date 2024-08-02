@@ -8,8 +8,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddDbContext<ToDoContext>(opt =>
 {
     opt.UseSqlServer(builder.Configuration.GetConnectionString("SqlServer"));
-
 });
+builder.Services.AddControllers();
 WebApplication app = builder.Build();
 
 app.UseSwagger();
@@ -17,7 +17,7 @@ app.UseSwaggerUI();
 app.MapGet("/", () => "Hello World!");
 app.MapGet("/getall", (ToDoContext context) => Results.Ok(context.ToDos.ToList()));
 app.MapGet("/farukaselam", () => Results.Ok("selam faruk"));
-
+app.MapGet("/halileselamver", () => Results.Ok("selamhalil"));
 app.MapGet("/create", (ToDoContext context, string work) =>
 {
     ToDo todo = new()
