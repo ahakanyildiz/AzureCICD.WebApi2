@@ -17,6 +17,7 @@ app.UseSwaggerUI();
 app.MapGet("/", () => "Hello World!");
 app.MapGet("/getall", (ToDoContext context) => Results.Ok(context.ToDos.ToList()));
 app.MapGet("/farukaselam", () => Results.Ok("selam faruk"));
+app.MapGet("/bedevi", () => Results.Ok("çöl devesi"));
 app.MapGet("/halileselamver", () => Results.Ok("selamhalil"));
 app.MapGet("/create", (ToDoContext context, string work) =>
 {
