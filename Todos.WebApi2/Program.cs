@@ -17,8 +17,9 @@ app.UseSwaggerUI();
 app.MapGet("/", () => "Hello World!");
 app.MapGet("/getall", (ToDoContext context) => Results.Ok(context.ToDos.ToList()));
 app.MapGet("/farukaselam", () => Results.Ok("selam faruk"));
-app.MapGet("/bedevi", () => Results.Ok("çöl devesi"));
+app.MapGet("/bedevi", () => Results.Ok("Ã§Ã¶l devesi"));
 app.MapGet("/halileselamver", () => Results.Ok("selamhalil"));
+app.MapGet("/batuyaselam", () => Results.Ok("batuya selam"));
 app.MapGet("/create", (ToDoContext context, string work) =>
 {
     ToDo todo = new()
@@ -28,8 +29,8 @@ app.MapGet("/create", (ToDoContext context, string work) =>
     context.ToDos.Add(todo);
     context.SaveChanges();
     Console.WriteLine("Hello world");
-    Console.WriteLine("Kayıt başarıyla yapıldı.");
-    Console.WriteLine("selamiden push yaptım");
+    Console.WriteLine("KayÃ½t baÃ¾arÃ½yla yapÃ½ldÃ½.");
+    Console.WriteLine("selamiden push yaptÃ½m");
     return Results.Ok(work);
 });
 
