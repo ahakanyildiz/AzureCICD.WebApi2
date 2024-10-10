@@ -21,6 +21,7 @@ app.MapGet("/bedevi", () => Results.Ok("çöl devesi"));
 app.MapGet("/halileselamver", () => Results.Ok("selamhalil"));
 app.MapGet("/batuyaselam", () => Results.Ok("batuya selam"));
 app.MapGet("/zadeyehello", () => Results.Ok("Hola Zade"));
+app.MapGet("/zadeyehello", () => Results.Ok("Hola Zade"));
 app.MapGet("/create", (ToDoContext context, string work) =>
 {
     ToDo todo = new()
